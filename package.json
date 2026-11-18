@@ -1,0 +1,25 @@
+{
+  "name": "carecircle",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CareCircle - Production-Quality Elderly Care & Medication Management Platform",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "npm run build --workspace=@carecircle/client && npm run dev --workspace=@carecircle/server",
+    "build": "npm run build --workspace=@carecircle/client && npm run build --workspace=@carecircle/server",
+    "start": "npm run start --workspace=@carecircle/server",
+    "test": "npm run test --workspace=@carecircle/server && npm run test --workspace=@carecircle/client",
+    "test:coverage": "npm run test:coverage --workspace=@carecircle/server",
+    "lint": "npm run lint --workspace=@carecircle/server && npm run lint --workspace=@carecircle/client",
+    "seed": "npm run seed --workspace=@carecircle/server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

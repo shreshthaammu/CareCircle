@@ -1,0 +1,261 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  --cc-canvas: #f8faf9;
+  --cc-surface: #ffffff;
+  --cc-subtle: #f1f5f4;
+  --cc-ink: #111827;
+  --cc-ink-secondary: #374151;
+  --cc-ink-muted: #6b7280;
+  --cc-border: #e2e8e6;
+  --cc-border-strong: #cbd5d1;
+  --cc-focus: #ea580c;
+}
+
+/* Base Body Styles with WCAG 2.2 AA legibility */
+body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: var(--cc-canvas);
+  color: var(--cc-ink);
+  margin: 0;
+  padding: 0;
+  transition: background-color 180ms cubic-bezier(0.16, 1, 0.3, 1), color 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+h1, h2 {
+  text-wrap: balance;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Accessible focus ring across all interactive controls */
+*:focus-visible {
+  outline: 3px solid var(--cc-focus) !important;
+  outline-offset: 2px !important;
+}
+
+/* Form control baseline */
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+select,
+textarea {
+  background-color: var(--cc-surface);
+  color: var(--cc-ink);
+  border-color: var(--cc-border-strong);
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):focus,
+select:focus,
+textarea:focus {
+  border-color: #0d9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.14);
+}
+
+/* Smooth Dark Mode with full surface + text optical balance */
+html.theme-dark {
+  --cc-canvas: #0b1120;
+  --cc-surface: #111b2e;
+  --cc-subtle: #18253d;
+  --cc-ink: #f1f5f9;
+  --cc-ink-secondary: #cbd5e1;
+  --cc-ink-muted: #94a3b8;
+  --cc-border: #24324d;
+  --cc-border-strong: #334669;
+  --cc-focus: #fb923c;
+  color-scheme: dark;
+}
+
+html.theme-dark body {
+  background-color: var(--cc-canvas);
+  color: var(--cc-ink);
+}
+
+html.theme-dark header {
+  background-color: #0f172a !important;
+  border-color: var(--cc-border) !important;
+}
+
+html.theme-dark .card,
+html.theme-dark .cc-surface {
+  background-color: var(--cc-surface) !important;
+  color: var(--cc-ink) !important;
+  border-color: var(--cc-border) !important;
+}
+
+html.theme-dark .bg-white {
+  background-color: var(--cc-surface) !important;
+}
+
+html.theme-dark .bg-sand-50,
+html.theme-dark .bg-sand-100,
+html.theme-dark .bg-sand-200,
+html.theme-dark .bg-sand-200\/80 {
+  background-color: var(--cc-subtle) !important;
+}
+
+html.theme-dark .bg-teal-50,
+html.theme-dark .bg-teal-50\/50,
+html.theme-dark .bg-teal-50\/60,
+html.theme-dark .bg-teal-100 {
+  background-color: rgba(13, 148, 136, 0.16) !important;
+}
+
+html.theme-dark .bg-amber-50,
+html.theme-dark .bg-amber-50\/60,
+html.theme-dark .bg-amber-100 {
+  background-color: rgba(217, 119, 6, 0.18) !important;
+}
+
+html.theme-dark .bg-red-50,
+html.theme-dark .bg-red-100 {
+  background-color: rgba(220, 38, 38, 0.18) !important;
+}
+
+html.theme-dark .border-sand-100,
+html.theme-dark .border-sand-200,
+html.theme-dark .border-sand-300,
+html.theme-dark .divide-sand-100 > * + *,
+html.theme-dark .divide-sand-200 > * + * {
+  border-color: var(--cc-border) !important;
+}
+
+html.theme-dark .text-stone-900,
+html.theme-dark .text-stone-800,
+html.theme-dark .text-teal-950,
+html.theme-dark .text-teal-900 {
+  color: var(--cc-ink) !important;
+}
+
+html.theme-dark .text-stone-700,
+html.theme-dark .text-stone-600 {
+  color: var(--cc-ink-secondary) !important;
+}
+
+html.theme-dark .text-stone-500,
+html.theme-dark .text-stone-400 {
+  color: var(--cc-ink-muted) !important;
+}
+
+html.theme-dark .text-teal-800,
+html.theme-dark .text-teal-700 {
+  color: #5eead4 !important;
+}
+
+html.theme-dark .text-amber-900,
+html.theme-dark .text-amber-800,
+html.theme-dark .text-amber-700 {
+  color: #fcd34d !important;
+}
+
+html.theme-dark .text-blue-900,
+html.theme-dark .text-blue-800 {
+  color: #93c5fd !important;
+}
+
+html.theme-dark .text-red-800,
+html.theme-dark .text-red-700 {
+  color: #fca5a5 !important;
+}
+
+/* High-Contrast Mode (WCAG AAA) */
+html.theme-high-contrast {
+  --cc-canvas: #000000;
+  --cc-surface: #0a0a0a;
+  --cc-subtle: #141414;
+  --cc-ink: #ffffff;
+  --cc-ink-secondary: #fde047;
+  --cc-ink-muted: #e5e5e5;
+  --cc-border: #fde047;
+  --cc-border-strong: #fde047;
+  --cc-focus: #00ffff;
+}
+
+html.theme-high-contrast body {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+html.theme-high-contrast header,
+html.theme-high-contrast .card,
+html.theme-high-contrast .cc-surface,
+html.theme-high-contrast .bg-white,
+html.theme-high-contrast .bg-sand-50,
+html.theme-high-contrast .bg-sand-100,
+html.theme-high-contrast .bg-sand-200,
+html.theme-high-contrast .bg-teal-50,
+html.theme-high-contrast .bg-amber-50 {
+  background-color: #0a0a0a !important;
+  color: #ffffff !important;
+  border-color: #fde047 !important;
+}
+
+html.theme-high-contrast .text-stone-900,
+html.theme-high-contrast .text-stone-800,
+html.theme-high-contrast .text-stone-700,
+html.theme-high-contrast .text-stone-600,
+html.theme-high-contrast .text-stone-500,
+html.theme-high-contrast .text-teal-950,
+html.theme-high-contrast .text-teal-900,
+html.theme-high-contrast .text-teal-800,
+html.theme-high-contrast .text-teal-700 {
+  color: #fde047 !important;
+}
+
+html.theme-high-contrast button,
+html.theme-high-contrast a[class*="bg-"] {
+  border: 2px solid #fde047 !important;
+}
+
+/* Touch Target Minimums (44px x 44px) */
+button, a, input:not([type="checkbox"]):not([type="radio"]), select, textarea {
+  min-height: 44px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print Styles for Emergency Card */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 13pt !important;
+    padding: 0 !important;
+  }
+
+  nav, header, footer, .no-print, button {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .card {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+}
